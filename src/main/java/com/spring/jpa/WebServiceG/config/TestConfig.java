@@ -2,10 +2,12 @@ package com.spring.jpa.WebServiceG.config;
 
 import com.spring.jpa.WebServiceG.entities.Category;
 import com.spring.jpa.WebServiceG.entities.Order;
+import com.spring.jpa.WebServiceG.entities.Product;
 import com.spring.jpa.WebServiceG.entities.User;
 import com.spring.jpa.WebServiceG.entities.enums.OrderStatus;
 import com.spring.jpa.WebServiceG.repositories.CategoryRepository;
 import com.spring.jpa.WebServiceG.repositories.OrderRepository;
+import com.spring.jpa.WebServiceG.repositories.ProductRepository;
 import com.spring.jpa.WebServiceG.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,8 @@ public class TestConfig implements CommandLineRunner {
     private OrderRepository orderRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
 
     @Override
@@ -32,6 +36,12 @@ public class TestConfig implements CommandLineRunner {
         Category c1 = new Category(null, "Electronics");
         Category c2 = new Category(null, "Books");
         Category c3 = new Category(null, "Computers");
+
+        Product p1 = new Product(null, "The Lord of the Rings", "My precious", 90.5, "");
+        Product p2 = new Product(null, "Smart Tv", "My precious", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "My precious", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "My precious", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "My precious", 100.99, "");
 
         User u1 = new User(null, "Maria Brown", "maria@gmail.com", "98959595", "123456");
         User u2 = new User(null, "Alex Green", "alex@gmail.com", "941391522", "123456");
@@ -43,5 +53,6 @@ public class TestConfig implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
         categoryRepository.saveAll(Arrays.asList(c1,c2,c3));
+        productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
     }
 }
